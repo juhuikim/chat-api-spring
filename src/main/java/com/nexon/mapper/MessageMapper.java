@@ -2,6 +2,7 @@ package com.nexon.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -18,4 +19,7 @@ public interface MessageMapper {
 	
 	@Select("Select * from message where chatroomid = #{chatroomid} and (senderid = #{senderid} or receiverid = #{receiverid} or receiverid = 0)")
 	public List<Message> selectAllMessage(@Param("chatroomid") Integer chatroomid, @Param("senderid") Integer senderid, @Param("receiverid") Integer receiverid);
+
+	@Delete("Delete from message where chatroomid = #{chatroomid}")
+	public void deleteAllMessage(@Param("chatroomid") Integer chatroomid);
 }

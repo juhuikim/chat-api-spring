@@ -90,6 +90,7 @@ public class ChatroomController {
 		int result = memberMapper.selectMemberCount(member.getChatroomid());
 		if(result == 0) {
 			chatroomMapper.deleteChatroom(member.getChatroomid());
+			messageMapper.deleteAllMessage(member.getChatroomid());
 		}
 	}
 	
